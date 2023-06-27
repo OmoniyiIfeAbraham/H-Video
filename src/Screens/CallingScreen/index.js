@@ -9,16 +9,17 @@ const CallingScreen = ({ navigation, route }) => {
     navigation.goBack();
   };
 
+  const user = route?.params?.user;
+
   return (
     <View style={styles.page}>
-      <Pressable onPress={() => goBack} style={styles.backButton}>
+      <Pressable onPress={goBack} style={styles.backButton}>
         <Ionicons name="chevron-back" color={"white"} size={25} />
       </Pressable>
       <View style={styles.cameraPreview}>
-        <Text style={styles.name}>Alex</Text>
+        <Text style={styles.name}>{user?.user_display_name}</Text>
         <Text style={styles.phoneNumber}>ringing +234 90 3282 5450</Text>
       </View>
-
       <CallActionBox />
     </View>
   );
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 50,
     left: 10,
+    zIndex: 10,
   },
 });
 
